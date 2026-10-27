@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PricePulse</title>
+  <script src="/js/theme-init.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <button type="button" class="icon-btn nav-toggle" id="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="primary-nav"></button>
+        <a href="#dashboard" class="brand" aria-label="PricePulse dashboard">
+          <img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28">
+          <span class="brand-name">PricePulse</span>
+        </a>
+        <nav id="primary-nav" class="nav" aria-label="Primary">
+          <a href="#dashboard" data-nav="dashboard">Dashboard</a>
+          <a href="#watchlist" data-nav="watchlist">Watch List</a>
+          <a href="#purchases" data-nav="purchases">Purchases</a>
+          <a href="#settings" data-nav="settings">Settings</a>
+        </nav>
+        <div class="topbar-actions">
+          <a href="#add" class="btn btn-primary btn-sm" id="add-link" data-nav="add"><span class="btn-label">Add product</span></a>
+          <a href="#notifications" class="icon-btn" id="bell-link" aria-label="Notifications" title="Notifications" data-nav="notifications"></a>
+          <span class="user-name truncate" id="user-name"></span>
+          <button type="button" class="icon-btn" id="logout-btn" aria-label="Sign out" title="Sign out"></button>
+        </div>
+      </div>
+      <div class="route-progress" id="route-progress" hidden></div>
+    </header>
+    <div class="demo-banner" id="demo-banner" hidden>
+      <div class="demo-banner-inner">
+        <p><strong>Demo account.</strong> The products, stores, and prices are made up; they aren’t live retailer prices. Everything here is deleted when you end the demo.</p>
+        <button type="button" class="btn btn-sm" id="end-demo">End demo</button>
+      </div>
+    </div>
+    <main id="main" class="main view" tabindex="-1"></main>
+    <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/chart.js"></script>
+  <script src="/js/product-card.js"></script>
+  <script src="/js/views/dashboard.js"></script>
+  <script src="/js/views/watchlist.js"></script>
+  <script src="/js/views/product.js"></script>
+  <script src="/js/views/product-form.js"></script>
+  <script src="/js/views/purchases.js"></script>
+  <script src="/js/views/notifications.js"></script>
+  <script src="/js/views/settings.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

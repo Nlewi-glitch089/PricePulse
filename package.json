@@ -1,0 +1,27 @@
+{
+  "name": "pricepulse",
+  "version": "1.0.0",
+  "description": "PricePulse: track product prices, keep a private watch list, and get alerted when a price reaches your target.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.js",
+    "dev": "node --watch --env-file-if-exists=.env server.js",
+    "test": "node --test --test-concurrency=1 \"tests/*.test.js\""
+  },
+  "engines": {
+    "node": ">=22.9"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.3.0",
+    "express-session": "^1.19.0",
+    "mongodb": "^7.7.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^11.3.0"
+  },
+  "allowScripts": {
+    "mongodb-memory-server": false
+  }
+}

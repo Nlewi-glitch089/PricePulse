@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PricePulse: track product prices, set target prices, and get told when it's time to buy.">
+  <title>PricePulse · Buy at the right price</title>
+  <script src="/js/theme-init.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="/" class="brand" aria-label="PricePulse home">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28">
+        <span class="brand-name">PricePulse</span>
+      </a>
+      <nav class="topbar-actions" aria-label="Account">
+        <a href="/login.html" class="btn">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="landing-hero" aria-labelledby="hero-title">
+      <div class="landing-copy">
+        <h1 id="hero-title">Buy at the right price, not the first price.</h1>
+        <p class="lede">
+          Keep a list of things you’re thinking about buying. Record their prices as you see them, set the price you’d be
+          happy to pay, and PricePulse tells you when one gets there.
+        </p>
+        <div class="demo-start">
+          <div class="row">
+            <a href="/register.html" class="btn btn-primary btn-lg">Create a free account</a>
+            <button type="button" class="btn btn-lg" data-start-demo data-alert="demo-alert">Explore a demo</button>
+          </div>
+          <p class="small secondary">The demo is a private, temporary account filled with made-up sample products. It’s deleted when you end it.</p>
+          <div id="demo-alert"></div>
+        </div>
+      </div>
+
+      <figure class="card landing-example">
+        <div class="spread">
+          <div>
+            <div class="tiny muted">Example</div>
+            <div class="example-name">Wireless headphones</div>
+          </div>
+          <span class="badge badge-target">Target reached</span>
+        </div>
+        <svg class="chart-svg landing-chart" viewBox="0 0 320 150" aria-hidden="true" focusable="false">
+          <line class="grid-line" x1="0" x2="320" y1="30" y2="30"></line>
+          <line class="grid-line" x1="0" x2="320" y1="75" y2="75"></line>
+          <line class="grid-line" x1="0" x2="320" y1="120" y2="120"></line>
+          <text class="axis-label" x="0" y="25">$350</text>
+          <text class="axis-label" x="0" y="70">$300</text>
+          <text class="axis-label" x="0" y="115">$250</text>
+          <line class="target-line" x1="40" x2="320" y1="93" y2="93"></line>
+          <text class="target-label" x="44" y="87">Target $280</text>
+          <path class="price-line" d="M44 39H100V48H156V30H212V66H268V102H312"></path>
+          <circle class="dot-manual" cx="44" cy="39" r="4.5"></circle>
+          <circle class="dot-manual" cx="100" cy="48" r="4.5"></circle>
+          <circle class="dot-manual" cx="156" cy="30" r="4.5"></circle>
+          <circle class="dot-manual" cx="212" cy="66" r="4.5"></circle>
+          <circle class="dot-manual dot-hit" cx="268" cy="102" r="5.5"></circle>
+        </svg>
+        <figcaption class="small secondary">
+          Five recorded prices: $340, $330, $350, $310, then <strong class="num">$270</strong>, below the $280 target,
+          so an alert went out. <span class="muted">Illustration with made-up prices.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="how" aria-labelledby="how-title">
+      <h2 id="how-title">How it works</h2>
+      <ol class="steps steps-row">
+        <li>
+          <strong>Add what you’re considering</strong>
+          <span>From any store, with today’s price, a category, and the price you’d be happy to pay.</span>
+        </li>
+        <li>
+          <strong>Record prices as you see them</strong>
+          <span>Every price is kept with its date, so you can see the lows, the highs, and the trend.</span>
+        </li>
+        <li>
+          <strong>Get told once, at your price</strong>
+          <span>When a recorded price reaches your target, you get one alert. No repeats, no noise.</span>
+        </li>
+      </ol>
+      <p class="how-cta"><a href="/register.html" class="btn btn-primary">Start your watch list</a></p>
+    </section>
+  </main>
+  <script src="/js/api.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create an account · PricePulse</title>
+  <script src="/js/theme-init.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <main class="auth-page">
+    <div class="card auth-card stack">
+      <a href="/" class="brand">
+        <img class="brand-mark" src="/favicon.svg" alt="" width="28" height="28">
+        <span>PricePulse</span>
+      </a>
+      <div>
+        <h1>Create your account</h1>
+        <p class="secondary small">Already have one? <a href="/login.html">Sign in</a></p>
+      </div>
+      <form id="register-form" class="stack" novalidate>
+        <div id="form-alert"></div>
+        <div class="field" data-field="name">
+          <label for="name">Name</label>
+          <input class="input" id="name" name="name" autocomplete="name" maxlength="80" required aria-describedby="name-error" autofocus>
+          <span class="error" id="name-error" hidden></span>
+        </div>
+        <div class="field" data-field="email">
+          <label for="email">Email</label>
+          <input class="input" id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
+          <span class="error" id="email-error" hidden></span>
+        </div>
+        <div class="field" data-field="password">
+          <label for="password">Password</label>
+          <input class="input" id="password" name="password" type="password" autocomplete="new-password" required aria-describedby="password-hint password-error">
+          <span class="hint" id="password-hint">At least 8 characters, with a letter and a number.</span>
+          <span class="error" id="password-error" hidden></span>
+        </div>
+        <div class="field" data-field="confirm">
+          <label for="confirm">Confirm password</label>
+          <input class="input" id="confirm" name="confirm" type="password" autocomplete="new-password" required aria-describedby="confirm-error">
+          <span class="error" id="confirm-error" hidden></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Create account</button>
+      </form>
+    </div>
+  </main>
+  <script src="/js/api.js"></script>
+  <script src="/js/format.js"></script>
+  <script src="/js/ui.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>

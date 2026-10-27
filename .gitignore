@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local MongoDB data directories (if you run mongod inside the project)
+data/
+
+# Database exports and private keys
+dump/
+*.pem
+*.key
+
+# Logs and test output
+*.log
+npm-debug.log*
+coverage/
+
+# Development tooling
+.vscode/
+.idea/
+.claude/
+
+# Operating system files
+.DS_Store
+Thumbs.db
