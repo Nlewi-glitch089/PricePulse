@@ -9,55 +9,110 @@ PricePulse is a web app for keeping track of things you want to buy and the pric
 - Edit or remove products. Adding the same product link twice is caught as a duplicate.
 - Search your watch list, filter it by category, store, or status, and sort it by name, price, target, or most recent change.
 - Record prices as you see them and view the history as a chart, with the lowest, highest, and average price over the last 7, 30, or 90 days or all time.
-- Get an alert in the app when a price reaches your target (once per drop, not every time you record a price).
-- See a dashboard of what's at your target, recent price changes, and the biggest drops.
+- Get an alert in the app when a recorded price reaches your target.
+- See a dashboard of target prices, recent changes, and the biggest drops.
 - Mark products as purchased and look back at what you paid.
 - Use it on a phone or a computer, in light or dark mode.
 
 ## Built With
 
-- Node.js
-- Express
-- MongoDB
+- Node.js 22.9 or newer
+- Express 5
+- MongoDB (official Node.js driver)
 - HTML, CSS, and JavaScript
 
-## Getting Started
+## Requirements
 
-You'll need [Node.js](https://nodejs.org) 22.9 or newer and a MongoDB database, either [MongoDB Community Server](https://www.mongodb.com/try/download/community) on your computer or a free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster.
+- Node.js 22.9 or newer
+- npm
+- MongoDB Atlas cluster or local MongoDB server
 
-1. Install the dependencies:
+## Run locally
+
+1. Clone the repository and install dependencies:
 
    ```bash
+   git clone https://github.com/Nlewi-glitch089/PricePulse.git
+   cd PricePulse
    npm install
    ```
 
 2. Copy the example settings file:
 
+   **macOS / Linux / Git Bash**
    ```bash
    cp .env.example .env
    ```
 
-3. Open `.env` and fill in:
-   - `MONGODB_URI`: your MongoDB connection string (for a local install, `mongodb://127.0.0.1:27017`)
-   - `SESSION_SECRET`: any long random string. You can make one with:
+   **Windows PowerShell**
+   ```powershell
+   Copy-Item .env.example .env
+   ```
 
-     ```bash
-     node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-     ```
+3. Edit `.env` and set:
 
-4. Start the app:
+   | Variable | Required | Purpose |
+   | --- | --- | --- |
+   | `MONGODB_URI` | Yes | MongoDB connection string |
+   | `MONGODB_DB` | No | Database name; defaults to `pricepulse` |
+   | `SESSION_SECRET` | Yes for production | Long random string used to sign session cookies |
+   | `NODE_ENV` | No | Use `development` locally and `production` on the host |
+   | `PORT` | No | Port; defaults to `3000` |
+   | `PRICE_PROVIDER_HTTP_NAME` | No | Name of an optional authorized price provider |
+   | `PRICE_PROVIDER_HTTP_ENDPOINT` | No | Optional provider endpoint |
+   | `PRICE_PROVIDER_HTTP_API_KEY` | No | Optional server-side provider key |
+   | `PRICE_PROVIDER_HTTP_HOSTS` | No | Allowed provider hosts |
+
+   Generate a session secret with:
+
+   ```bash
+   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+   ```
+
+4. Start the application:
 
    ```bash
    npm start
    ```
 
-   Then open http://localhost:3000 and create an account. Use `npm run dev` instead if you want the server to restart when you change a file.
+Open [http://localhost:3000](http://localhost:3000). For development with automatic server restarts, use `npm run dev`.
 
-To run the tests, use `npm test`. The first run downloads a temporary copy of MongoDB for testing, so it takes a few minutes.
+## Available commands
 
-The repo also includes a `render.yaml` file for deploying to [Render](https://render.com). Render will ask for your `MONGODB_URI` and generate the session secret.
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Start the server |
+| `npm run dev` | Start with Node's watch mode |
+| `npm test` | Run the automated test suite |
+| `npm run db:init` | Check the database connection and initialize database indexes |
+| `npm run catalog:seed` | Load the built-in catalog |
+| `npm run catalog:refresh` | Refresh catalog metadata (requires TMDB credentials if configured) |
+| `npm run catalog:build` | Rebuild the catalog data |
+
+The tests use a temporary MongoDB instance and do not use your configured application database. The first test run may take longer while the temporary database is downloaded.
+
+## Deploying to Render
+
+The repository does not currently include a `render.yaml` deployment blueprint. Create the service manually:
+
+1. Create a **Web Service** in [Render](https://render.com) and connect this GitHub repository.
+2. Choose the Node runtime.
+3. Set the build command to `npm install`.
+4. Set the start command to `npm start`.
+5. Add these environment variables in the Render service settings:
+   - `MONGODB_URI` — your production MongoDB connection string.
+   - `MONGODB_DB` — optional production database name.
+   - `SESSION_SECRET` — a strong, unique random secret.
+   - `NODE_ENV` — `production`.
+6. In MongoDB Atlas, allow network access from the Render service and use a database user with only the permissions the app needs.
+7. Deploy and verify registration, sign-in, watchlist isolation, and product updates.
+
+Render supplies the `PORT` value automatically. Do not commit the production database URI or session secret.
+
+No verified public production URL is recorded in this repository. Add the stable Render service URL after a successful deployment has been confirmed.
 
 ## Limitations
 
-- **Prices are entered by hand unless you set up a price provider.** PricePulse doesn't scrape store websites. If you have access to a price API, you can connect it with the `PRICE_PROVIDER_HTTP_*` settings in `.env`, and a "Check price now" button will appear on products with a link.
-- **Notifications are in-app only.** Alerts show up in the app's notification center; there are no email or push notifications yet.
+- Prices are entered manually unless you configure a compatible price provider. PricePulse does not scrape store websites.
+- Optional price-provider credentials must remain server-side and should only be used with a provider you are authorized to access.
+- Notifications are in-app only; there are no email or push notifications yet.
