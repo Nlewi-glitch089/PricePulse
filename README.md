@@ -2,6 +2,10 @@
 
 PricePulse is a web app for keeping track of things you want to buy and the prices you see them at. Add a product, record its price whenever you check it, and set the price you'd be happy to pay. PricePulse keeps the price history, shows how the price has moved, and lets you know when a recorded price drops to your target.
 
+## Live Demo
+
+[Visit PricePulse](https://pricepulse-a5kl.onrender.com)
+
 ## Features
 
 - Create an account and log in. Each person's watch list is private.
@@ -109,7 +113,7 @@ The repository does not currently include a `render.yaml` deployment blueprint. 
 
 Render supplies the `PORT` value automatically. Do not commit the production database URI or session secret.
 
-No verified public production URL is recorded in this repository. Add the stable Render service URL after a successful deployment has been confirmed.
+The production service is deployed at [https://pricepulse-a5kl.onrender.com](https://pricepulse-a5kl.onrender.com).
 
 ## Limitations
 
